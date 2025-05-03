@@ -128,9 +128,10 @@ export default function LoginPage() {
         await new Promise((resolve) => setTimeout(resolve, 500))
 
         if (userData.role === "admin") {
-          router.push("/admin")
+          // Force a full page reload to ensure session is established
+          window.location.href = "/admin"
         } else {
-          router.push("/dashboard")
+          window.location.href = "/dashboard"
         }
       } catch (roleError) {
         console.error("Error fetching user role:", roleError)
